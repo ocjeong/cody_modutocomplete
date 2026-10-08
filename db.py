@@ -2,7 +2,7 @@
 import json
 from pathlib import Path
 
-DICT_PATH = Path("data/dictionary.json")
+DICT_PATH = Path("./data/dictionary.json")
 
 def load_dictionary() -> dict:
     """사전 로드 (파일 없으면 기본값 생성)"""
