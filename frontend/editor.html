@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <!-- 에디터 본체: contenteditable=true 로 직접 편집 가능 -->
+  <div id="editor" contenteditable="true"
+       data-placeholder="@ 로 학습자를 멘션하세요..."></div>
+
+  <!-- 자동완성 드롭다운 (JS가 위치/내용 제어) -->
+  <ul id="dropdown" class="dropdown hidden"></ul>
+
+  <!-- __LEARNERS__ 는 Python이 실제 데이터로 치환 -->
+  <script>
+    const LEARNERS = __LEARNERS__;
+  </script>
+  <script src="editor.js"></script>
+</body>
+</html>
