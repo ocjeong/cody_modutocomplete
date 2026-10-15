@@ -1,0 +1,49 @@
+/* 에디터 본체 */
+#editor {
+  min-height: 120px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  outline: none;
+}
+/* placeholder: 비어있을 때만 표시 */
+#editor:empty:before {
+  content: attr(data-placeholder);
+  color: #aaa;
+}
+
+/* 칩(Chip) 스타일 */
+.chip {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1a73e8;
+  border-radius: 12px;
+  padding: 2px 8px;
+  margin: 0 2px;
+  font-size: 14px;
+  user-select: none;   /* 드래그 선택 방지 */
+}
+
+/* 드롭다운 */
+.dropdown {
+  position: absolute;         /* 커서 좌표 기준 배치 */
+  list-style: none;
+  margin: 0; padding: 4px 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  min-width: 140px;
+  z-index: 1000;
+}
+.dropdown li {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+/* 키보드로 선택된 항목 강조 */
+.dropdown li.active {
+  background: #e8f0fe;
+}
+.hidden { display: none; }
