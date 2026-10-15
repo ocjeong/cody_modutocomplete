@@ -246,3 +246,26 @@ function getSelectedIds() {
   return [...editor.querySelectorAll(".chip")]
     .map(chip => chip.dataset.id);
 }
+
+// 🔗 STEP ③ Streamlit 연결
+// 2️⃣ JS → Python 데이터 전달 (가장 중요한 다리 🌉)
+
+// --- Streamlit으로 값 전달 ---
+function sendToStreamlit() {
+  const payload = {
+    text: serializeEditor(),      // "[@홍길동] 지각 처리"
+    ids: getSelectedIds()         // ["u001"]
+  };
+  // 부모(Streamlit) 창으로 값 전송
+  window.parent.postMessage(
+    { type: "editor_submit", payload: payload },
+    "*"
+  );
+}
+
+// 에디터가 바뀔 때마다 자동 전송 (디바운스)
+let sendTimer = null;
+editor.addEventListener("input", () => {
+  clearTimeout(sendTimer);
+  sendTimer = setTimeout(sendToStreamlit, 300);  // 300ms 후 전송
+});
